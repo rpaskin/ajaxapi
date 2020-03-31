@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>API com AJAX</title>
+</head>
+<body>
+	<h1>Filmes de Star Wars</h1>
+	<ul id="movies">
+		<li id="template">
+			<span class="title">Título</span>
+			-
+			Episódio <span class="episode_id">X</span>
+			-
+			<span class="release_date">1979-XX-XX</span>
+		</li>
+	</ul>
+
+	<button id="get_movies" type="button">Pegar Filmes</button>
+
+	<script type="text/javascript">
+(function() {
+  var httpRequest;
+  document.getElementById("get_movies").addEventListener('click', makeRequest);
+
+  function makeRequest() {
+    httpRequest = new XMLHttpRequest();
+
+    if (!httpRequest) {
+      alert('ERRO: não foi possível pegar os dados');
+      return false;
+    }
+    httpRequest.onreadystatechange = getFilms;
+    httpRequest.open('GET', 'https://swapi.co/api/films/');
+    httpRequest.send();
+  }
+
+  function getFilms() {
+    if (httpRequest.readyState === XMLHttpRequest.DONE) {
+      if (httpRequest.status === 200) {
+        // console.log(httpRequest.responseText);
+        data = JSON.parse(httpRequest.responseText);
+        console.log(42,data);
+        showFilms(data);
+      } else {
+        alert('Houve um problema com a requisição de dados.');
+      }
+    }
+  }
+
+   function showFilms(data){
+   	console.log(50,data);
+   }
+})();
+	</script>
+
+</body>
+</html>
