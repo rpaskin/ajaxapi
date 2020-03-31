@@ -47,7 +47,7 @@
   }
 
   function showFilms(data){
-		console.log(data);
+		// console.log(data);
   	data.results.forEach(showFilm);
   }
 
@@ -55,9 +55,9 @@
   	parent = document.getElementById("movies");
   	newElement = parent.getElementsByClassName("template")[0].cloneNode(true);
 
-  	console.log(59, element);
+  	// console.log(59, element);
 
-  	console.log(60, newElement.style);
+  	// console.log(60, newElement.style);
 
   	newElement.style.display = "block";
   	newElement.getElementsByClassName("title")[0].textContent = element["title"];
